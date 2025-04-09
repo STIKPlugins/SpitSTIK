@@ -1,0 +1,6 @@
+name: SpitSTIK
+version: '1.0'
+main: me.stokmenn.spitstik.SpitSTIK
+api-version: '1.21'
+commands:
+  spit:

@@ -1,0 +1,11 @@
+# this config supports MiniMessage
+configReloaded: "<green>✔ Config has been reloaded"
+
+listener:
+  spitReceive: "Player <player> spat on you"
+
+command:
+  onlyPlayerCanUse: "<red>✘ This command can only be used by a player"
+  noPermissionToUse: "<red>✘ You do not have permission to use this command"
+  noPermissionToReload: "<red>✘ You do not have permission to reload the SpitSTIK plugin"
+  cooldownRemaining: "<red>✘ Please wait <cooldownRemaining>s."

@@ -1,0 +1,61 @@
+# Join our discord - https://discord.gg/YGzA4UxzFB you can find another good plugins there. (don't delete this string)
+# Permissions
+# "SpitSTIK.use" - permission required to use "/spit" command
+# "SpitSTIK.reload" - permission required to use "/spit reload" command
+
+# default cooldown in milliseconds for "/spit" command
+defaultCooldown: 10000
+
+# default velocity with which launch spit
+defaultVelocity: 0.4
+
+# Plays the "ENTITY_LLAMA_SPIT" sound when the "/spit" command is used.
+defaultUseSound: true
+
+# does damage from "/spit"
+defaultDoDamage: false
+
+# default Volume
+defaultVolume: 1.0
+
+# default Pitch
+defaultPitch: 1.0
+
+# Log to CoreProtect when a spit projectile removes an item from an ItemFrame.
+logCoreProtect: false
+coreProtectPrefix: "#SpitSTIK-"
+
+# special groups which have their own cooldown, velocity, useSound and doDamage to "/spit"
+# if you don't use special groups, "/spit" will be launched with default cooldown, velocity, useSound, doDamage, volume, pitch
+useSpecialGroups: false
+
+# you have 3 groups here, but you create another ones, isn't it great?
+# you just need to create another group, but you need to do this inside "groups:" block
+# All group names must follow the format "groupX", where X is a number (e.g., "group4", "group23").
+# and of course all groups must have cooldown, velocity, useSound, doDamage, volume, pitch
+# If a player has more than one group, the one with the highest number will have priority.
+groups:
+  # permission required - "SpitSTIK.group1"
+  group1:
+    cooldown: 8000
+    velocity: 0.7
+    useSound: true
+    doDamage: false
+    volume: 0.7
+    pitch: 1.0
+  # permission required - "SpitSTIK.group2"
+  group2:
+    cooldown: 6000
+    velocity: 1.0
+    useSound: true
+    doDamage: false
+    volume: 1.0
+    pitch: 1.0
+  # permission required - "SpitSTIK.group3"
+  group3:
+    cooldown: 4000
+    velocity: 1.5
+    useSound: true
+    doDamage: false
+    volume: 3.0
+    pitch: 0.5
