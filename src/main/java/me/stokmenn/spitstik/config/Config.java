@@ -1,15 +1,10 @@
 package me.stokmenn.spitstik.config;
 
 import me.stokmenn.spitstik.GroupData;
-import org.bukkit.Bukkit;
 import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.plugin.java.JavaPlugin;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
@@ -35,11 +30,6 @@ public class Config {
         Config.plugin = plugin;
         plugin.saveDefaultConfig();
         reload();
-
-        if (!checkConfigHeader()) {
-            plugin.getLogger().severe("The first line of config.yml is missing or incorrect.");
-            Bukkit.getPluginManager().disablePlugin(plugin);
-        }
     }
 
     public static void reload() {
@@ -87,21 +77,5 @@ public class Config {
         }
 
         groups.sort(Comparator.comparingInt(GroupData::groupNumber).reversed());
-    }
-
-    private static boolean checkConfigHeader() {
-        File configFile = new File(plugin.getDataFolder(), "config.yml");
-        if (!configFile.exists()) return false;
-
-        try (BufferedReader reader = new BufferedReader(new FileReader(configFile))) {
-            String firstLine = reader.readLine();
-            if (firstLine == null) return false;
-
-            String expected = "# Join our discord - https://discord.gg/YGzA4UxzFB you can find another good plugins there. (don't delete this string)";
-            return firstLine.trim().equals(expected);
-        } catch (IOException e) {
-            e.printStackTrace();
-            return false;
-        }
     }
 }
