@@ -1,6 +1,6 @@
 package me.stokmenn.spitstik;
 
-public record GroupData(
+public record GroupData (
         int groupNumber,
         int cooldown,
         double velocity,

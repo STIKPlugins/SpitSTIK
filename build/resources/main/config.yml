@@ -26,13 +26,13 @@ logCoreProtect: false
 coreProtectPrefix: "#SpitSTIK-"
 
 # special groups which have their own cooldown, velocity, useSound and doDamage to "/spit"
-# if you don't use special groups, "/spit" will be launched with default cooldown, velocity, useSound and doDamage
+# if you don't use special groups, "/spit" will be launched with default cooldown, velocity, useSound, doDamage, volume, pitch
 useSpecialGroups: false
 
 # you have 3 groups here, but you create another ones, isn't it great?
 # you just need to create another group, but you need to do this inside "groups:" block
 # All group names must follow the format "groupX", where X is a number (e.g., "group4", "group23").
-# and of course all groups must have cooldown, velocity, useSound, doDamage
+# and of course all groups must have cooldown, velocity, useSound, doDamage, volume, pitch
 # If a player has more than one group, the one with the highest number will have priority.
 groups:
   # permission required - "SpitSTIK.group1"
@@ -57,5 +57,5 @@ groups:
     velocity: 1.5
     useSound: true
     doDamage: false
-    volume: 1.5
-    pitch: 1.0
+    volume: 3.0
+    pitch: 0.5
