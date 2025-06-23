@@ -43,8 +43,7 @@ public class SpitCommand implements CommandExecutor {
         if (!(sender instanceof Player player)) {
             sender.sendMessage(messages.get("command.onlyPlayerCanUse"));
             return true;
-        }
-        if (!player.hasPermission("SpitSTIK.use")) {
+        } else if (!player.hasPermission("SpitSTIK.use")) {
             player.sendMessage(messages.get("command.noPermissionToUse"));
             return true;
         }
@@ -71,9 +70,11 @@ public class SpitCommand implements CommandExecutor {
             }
         }
 
-        long remaining = (cooldown - (currentTime - lastUsed)) / 1000;
-        if (cooldown > 0 && currentTime - lastUsed < cooldown) {
-            player.sendMessage(messages.get("command.cooldownRemaining", Map.of("<cooldownRemaining>", remaining)));
+        if (currentTime - lastUsed < cooldown) {
+            double remaining = Math.max((cooldown - (currentTime - lastUsed)) / 1000.0, 0.1);
+            String formatted = String.format("%.1f", remaining);
+
+            player.sendMessage(messages.get("command.cooldownRemaining", Map.of("<cooldownRemaining>", formatted)));
             return true;
         }
 
@@ -81,8 +82,8 @@ public class SpitCommand implements CommandExecutor {
         if (useSound) {
             player.getWorld().playSound(player.getLocation(), Sound.ENTITY_LLAMA_SPIT, SoundCategory.HOSTILE, volume, pitch);
         }
-        cooldowns.put(player.getUniqueId(), currentTime);
 
+        cooldowns.put(player.getUniqueId(), currentTime);
         return true;
     }
 
@@ -92,7 +93,11 @@ public class SpitCommand implements CommandExecutor {
             return;
         }
 
-        Bukkit.getScheduler().runTaskAsynchronously(plugin, () -> {
+//        Bukkit.getScheduler().runTaskAsynchronously(plugin, () -> {
+//            messages.reload();
+//            Config.reload();
+//        });
+        Bukkit.getAsyncScheduler().runNow(plugin, task -> {
             messages.reload();
             Config.reload();
         });
