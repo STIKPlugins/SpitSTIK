@@ -5,6 +5,7 @@ import me.stokmenn.spitstik.config.Config;
 import me.stokmenn.spitstik.config.Messages;
 import net.coreprotect.CoreProtect;
 import org.bukkit.Bukkit;
+import org.bukkit.Material;
 import org.bukkit.Sound;
 import org.bukkit.SoundCategory;
 import org.bukkit.command.Command;
@@ -18,6 +19,7 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Set;
 import java.util.UUID;
 
 import static me.stokmenn.spitstik.SpitSTIK.coreProtectAPI;
@@ -56,6 +58,7 @@ public class SpitCommand implements CommandExecutor {
         boolean useSound = Config.defaultUseSound;
         float volume = Config.defaultVolume;
         float pitch = Config.defaultPitch;
+        Set<Material> materials = Config.defaultMaterials;
         if (Config.useSpecialGroups) {
             for (GroupData group : Config.groups) {
                 String permission = "SpitSTIK.group" + group.groupNumber();
@@ -66,8 +69,13 @@ public class SpitCommand implements CommandExecutor {
                 useSound = group.useSound();
                 volume = group.volume();
                 pitch = group.pitch();
+                materials = group.materials();
                 break;
             }
+        }
+        if (!materials.isEmpty() && !materials.contains(player.getInventory().getItemInMainHand().getType())) {
+            player.sendMessage(messages.get("command.wrongMaterial"));
+            return false;
         }
 
         if (currentTime - lastUsed < cooldown) {
@@ -93,10 +101,6 @@ public class SpitCommand implements CommandExecutor {
             return;
         }
 
-//        Bukkit.getScheduler().runTaskAsynchronously(plugin, () -> {
-//            messages.reload();
-//            Config.reload();
-//        });
         Bukkit.getAsyncScheduler().runNow(plugin, task -> {
             messages.reload();
             Config.reload();

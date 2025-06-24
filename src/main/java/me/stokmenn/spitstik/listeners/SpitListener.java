@@ -17,7 +17,6 @@ import java.util.Map;
 import static me.stokmenn.spitstik.SpitSTIK.coreProtectAPI;
 
 public class SpitListener implements Listener {
-
     private final Messages messages;
 
     public SpitListener(Messages messages) {
@@ -30,7 +29,7 @@ public class SpitListener implements Listener {
         if (!(event.getHitEntity() instanceof Player victim)) return;
         if (!(event.getEntity() instanceof LlamaSpit)) return;
 
-        victim.sendMessage(messages.get("listener.spitReceive", Map.of("<player>", attacker.getName())));
+        victim.sendMessage(messages.get("listener.spitReceive", Map.of("%player%", attacker.getName())));
     }
 
     @EventHandler

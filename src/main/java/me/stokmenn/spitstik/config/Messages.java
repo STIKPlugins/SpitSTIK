@@ -31,6 +31,7 @@ public class Messages {
 
         initMessage("command.onlyPlayerCanUse", "<red>✘ This command can only be used by a player");
         initMessage("command.noPermissionToUse", "<red>✘ You do not have permission to use this command");
+        initMessage("command.wrongMaterial", "<red>✘ <white>You need special item in hand to use this command");
         initMessage("command.noPermissionToReload", "<red>✘ You do not have permission to reload the SpitSTIK plugin");
         initMessage("command.cooldownRemaining", "<red>✘ Please wait <cooldownRemaining>s.");
     }

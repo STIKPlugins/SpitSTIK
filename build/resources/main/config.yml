@@ -1,4 +1,4 @@
-# Join our discord - https://discord.gg/YGzA4UxzFB you can find another good plugins there. (don't delete this string)
+# Join our discord - https://discord.gg/YGzA4UxzFB you can find another good plugins there.
 # Permissions
 # "SpitSTIK.use" - permission required to use "/spit" command
 # "SpitSTIK.reload" - permission required to use "/spit reload" command
@@ -20,6 +20,11 @@ defaultVolume: 1.0
 
 # default Pitch
 defaultPitch: 1.0
+
+# Material - item in main hand
+# is material required to use "/spit", if materialsList is empty, material is not required
+defaultMaterialsList:
+#  - "WHITE_DYE"
 
 # Log to CoreProtect when a spit projectile removes an item from an ItemFrame.
 logCoreProtect: false
@@ -43,6 +48,9 @@ groups:
     doDamage: false
     volume: 0.7
     pitch: 1.0
+    materialsList:
+#      - "LIGHT_GRAY_DYE"
+
   # permission required - "SpitSTIK.group2"
   group2:
     cooldown: 6000
@@ -51,6 +59,8 @@ groups:
     doDamage: false
     volume: 1.0
     pitch: 1.0
+    materialsList:
+
   # permission required - "SpitSTIK.group3"
   group3:
     cooldown: 4000
@@ -59,3 +69,5 @@ groups:
     doDamage: false
     volume: 3.0
     pitch: 0.5
+    materialsList:
+#      - "DARK_GRAY_DYE"
